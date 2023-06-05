@@ -1,4 +1,5 @@
 require("@nomicfoundation/hardhat-toolbox");
+require('dotenv').config()
 
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
@@ -47,7 +48,7 @@ module.exports = {
         network: 'polygon_mumbai',
         chainId: 80001,
         urls: {
-          apiURL: 'https://rpc-mumbai.maticvigil.com/',
+          apiURL: 'https://api-testnet.polygonscan.com/',
           browserURL: 'https://polygonscan.com/'
         },
       },
