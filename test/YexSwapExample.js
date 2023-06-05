@@ -6,7 +6,7 @@ const { anyValue } = require("@nomicfoundation/hardhat-chai-matchers/withArgs");
 const { expect } = require("chai");
 const { ethers } = require("hardhat");
   
-describe("YexSwapDemo", function () {
+describe("YexSwapExample", function () {
 
     async function deployYexSwap() {
     
@@ -27,14 +27,13 @@ describe("YexSwapDemo", function () {
 
     describe("Deployment", function () {
       it("Deploy", async function () {
-          const { yexSwapExample,tokenA,tokenB, owner, otherAccount } = await loadFixture(deployYexSwap);
+          const { yexSwapExample} = await loadFixture(deployYexSwap);
           
           const YexSwapPool = await ethers.getContractFactory("YexSwapPool");
           
           const pool1 = YexSwapPool.attach(await yexSwapExample.pool1());
-          const pool2 = YexSwapPool.attach(await yexSwapExample.pool2());
-
-        // init
+          
+          // init
           const pool1_reserve = await pool1.getReserves();
           expect(pool1_reserve[0]).to.equal(1000000000000000000n);
           expect(pool1_reserve[1]).to.equal(1000000000000000000n);
@@ -43,7 +42,7 @@ describe("YexSwapDemo", function () {
     });
     describe("Add liquidity", function () { 
         it("add liquidity", async function () {
-            const { yexSwapExample,tokenA,tokenB, owner, otherAccount } = await loadFixture(deployYexSwap);
+            const { yexSwapExample,tokenA,tokenB, owner } = await loadFixture(deployYexSwap);
             
             const YexSwapPool = await ethers.getContractFactory("YexSwapPool");
             
