@@ -7,21 +7,30 @@
 const hre = require("hardhat");
 
 async function main() {
-  const currentTimestampInSeconds = Math.round(Date.now() / 1000);
-  const unlockTime = currentTimestampInSeconds + 60;
 
-  const lockedAmount = hre.ethers.utils.parseEther("0.001");
+    const [deployer] = await ethers.getSigners();
 
-  const Lock = await hre.ethers.getContractFactory("Lock");
-  const lock = await Lock.deploy(unlockTime, { value: lockedAmount });
+    console.log("Deploying contracts with the account:", deployer.address);
 
-  await lock.deployed();
+    console.log("Account balance:", (await deployer.getBalance()).toString());
 
-  console.log(
-    `Lock with ${ethers.utils.formatEther(
-      lockedAmount
-    )}ETH and unlock timestamp ${unlockTime} deployed to ${lock.address}`
-  );
+
+    const ERC20WithFaucet = await ethers.getContractFactory("contracts/core/YexSwapExample.sol:ERC20WithFaucet");
+    // token
+    const tokenA = await ERC20WithFaucet.deploy('TestTokenA', 'TTA');
+    const tokenB = await ERC20WithFaucet.deploy('TestTokenB', 'TTB');
+
+    const YexSwapExample = await ethers.getContractFactory("YexSwapExample");
+    const YexSwapPool = await ethers.getContractFactory("YexSwapPool");
+
+    const yexSwapExample = await YexSwapExample.deploy(tokenA.address, tokenB.address);
+    const pool2 = YexSwapPool.attach(await yexSwapExample.pool2());
+
+
+    console.log("tokenA address:", tokenA.address);
+    console.log("tokenB address:", tokenB.address);
+    console.log("dex address:", yexSwapExample.address);
+    console.log("pool2 address: ", pool2.address);
 }
 
 // We recommend this pattern to be able to use async/await everywhere
