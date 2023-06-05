@@ -1,9 +1,15 @@
-yexExample合约地址: 0x9a9F998257858ec809921116925B4ceCf884665e
-yexExample pool2合约地址: 0xFE01bd2965Ba1f75f43C95004D20cF4627245F88
-tokenA合约地址: 0xFB6BaA810EF82c25CD36c6A33D3D230d86809a58
-tokenB合约地址: 0x6354bDE6ac074520B95B95c9a36FE0cCF0F1d6fC
+# Mumbai Testnet Deployment Information
 
-yexExample合约abi: 
+## Contract Address
+**YexExample**: 0x9a9F998257858ec809921116925B4ceCf884665e
+
+**YexSwapPool pool2**: 0xFE01bd2965Ba1f75f43C95004D20cF4627245F88
+
+**tokenA**: 0xFB6BaA810EF82c25CD36c6A33D3D230d86809a58
+
+**tokenB**: 0x6354bDE6ac074520B95B95c9a36FE0cCF0F1d6fC
+
+## YexExample Abi
 ```json
 {
   "_format": "hh-sol-artifact-1",
