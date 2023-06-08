@@ -348,9 +348,9 @@ contract YexSwapExample is YexSwapPool, AutomationCompatibleInterface {
         // 1. auction price is greater than maximum price
         if (((balanceB * max_reserveA)) > (max_reserveB * balanceA)) {
             uint256 delta;
-            unchecked {
-                delta = (balanceB - (balanceA * min_reserveB) / min_reserveA);
-            }
+            // unchecked {
+            delta = (balanceB - (balanceA * min_reserveB) / min_reserveA);
+            // }
             balanceB_ -= delta;
             // swap using the pool with the minimum price
             if (address(min_pool) == address(this)) {
@@ -362,9 +362,9 @@ contract YexSwapExample is YexSwapPool, AutomationCompatibleInterface {
         } else if (((balanceB * min_reserveA)) < (min_reserveB * balanceA)) {
             //2. auction price is less than minimum price
             uint256 delta;
-            unchecked {
-                delta = (balanceA - (balanceB * max_reserveA) / max_reserveB);
-            }
+            // unchecked {
+            delta = (balanceA - (balanceB * max_reserveA) / max_reserveB);
+            // }
             balanceA_ -= delta;
             // swap using the pool with the maximum price
             if (address(max_pool) == address(this)) {
@@ -488,11 +488,11 @@ contract YexSwapExample is YexSwapPool, AutomationCompatibleInterface {
             (max_reserveB * balanceA_before_swap)
         ) {
             uint256 delta;
-            unchecked {
-                delta = (balanceB_before_swap -
-                    (balanceA_before_swap * min_reserveB) /
-                    min_reserveA);
-            }
+            // unchecked {
+            delta = (balanceB_before_swap -
+                (balanceA_before_swap * min_reserveB) /
+                min_reserveA);
+            // }
             balanceB_ -= delta;
             (delta, ) = getOptionalAmountOut(
                 0,
@@ -506,11 +506,11 @@ contract YexSwapExample is YexSwapPool, AutomationCompatibleInterface {
             (min_reserveB * balanceA_before_swap)
         ) {
             uint256 delta;
-            unchecked {
-                delta = (balanceA_before_swap -
-                    (balanceB_before_swap * max_reserveA) /
-                    max_reserveB);
-            }
+            // unchecked {
+            delta = (balanceA_before_swap -
+                (balanceB_before_swap * max_reserveA) /
+                max_reserveB);
+            // }
             balanceA_ -= delta;
             (, delta) = getOptionalAmountOut(
                 delta,
