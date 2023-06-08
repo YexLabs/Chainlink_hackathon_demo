@@ -63,7 +63,7 @@ But **Batch Auction** is not enough, if the demand is asymmetric, the excess dem
 
 So we implemented an **A2MM** aggregator, that is, aggregated the liquidity of multiple AMMs, and only selected one with the best price when a swap execute. This means that an attacker would have to attack multiple AMMs simultaneously to affect this transaction.
 
-![a2mm](./docs/images/A2MM.png)
+![a2mm](https://raw.githubusercontent.com/yexlab/Chainlink_hackathon_demo/main/docs/images/A2MM.png)
 
 As shown in the picture, the aggregator chooses AMM and does the swap in the same transaction, so when the attacker front-running the trader, the aggregator will choose another AMM with better price to avoid the attack.
 
