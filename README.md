@@ -27,7 +27,8 @@ attackers exploit market and liquidity imbalances to execute profitable trades a
 
 The first transaction will bump up the price and let the second transaction(which we refer as victim's)to be executed at a higher price. The attacker sell token in the third transaction and take the profit from it.
 
-This is a very common MEV approach that actually caused by slippage of AMMs as well.
+🥪 attack is a very common MEV approach that actually caused by slippage of AMMs as well.
+
 
 ## **Solutions**
 
@@ -46,7 +47,7 @@ We practiced **Batch Auction** to extend the AMM. **Batch Auction** is commonly 
 
 We use the same idea, use a window of time to gather a batch of swaps and implement a unified clearing price for them, making them independent of the ranking.
 
-The defination in Crypto Wiki is as follows:
+The defination in <ins> Crypto Wiki <ins> is as follows:
 
 * Individual orders are grouped together into a batch and executed at the same time. 
 
