@@ -14,40 +14,40 @@ There are two known problems with AMM:
 
 ### **Slippage**
 
-When the liquidity depth is not enough, the slippage is large. 
+When the liquidity depth is not enough,  It will cause significant slippage in some transaction. 
 
-If there are two transactions in different directions but with the same amount at the same time, an AMM with a constant K as the formula will return to the initial position, and the price of the first transaction among the two traders will be unfair.
+If two swaps with same amount come in different directions at the same time, According to AMM formula, It will return to the initial position, and the price of the first swap will be unfair.
 
-This makes sense because he pushed up the price and took the slippage, and the latter one sold at a higher price.
+This makes sense because the first swap bumps up the price and took the slippage, and the latter swap needs to accept the higher price.
 
-In fact, if these two people swap tokens directly with each other, there is no slippage. In fact if you have a large amount of tokens to sell, say 1000 ETH, you definitely don't want to be incurring a huge slippage. If you use the idea of **Batch Auction**, you should be willing to wait for a while for anyone who wants to buy ETH from you.
+If two people swap tokens in opposite directions with each other, then there will be no slippage. In reality. If person A have a large amount of tokens to sell, let's assume this amount to be 1000 ETH, then the tolerance of person A to big slippage is low because of the large value. If person A use a **Batch Auction** mechanism to swap, it would enforce this person A to wait for a while for a new person B to buy the ETH from him. this Batch Auction procedure can eliminate or reduce the occurence of the slippage.
 
 ### **Sandwich Attack**
+attackers exploit market and liquidity imbalances to execute profitable trades at the expense of victims or vulnerable traders. The attacker front-runs the victim's trade, hikes the prices, and makes the victim buy at a higher price.
 
-Arbitrage bot places their own two transactions around a victim’s transaction with the intention of manipulating the price and profiting from the user. That is called a sandwich attack.
+The first transaction will bump up the price and let the second transaction(which we refer as victim's)to be executed at a higher price. The attacker sell token in the third transaction and take the profit from it.
 
-The first transaction will push up the price, and let the second transaction(which is victim's) be executed at a higher price.  The attacker sell token in the third transaction and profit from it.
+🥪 attack is a very common MEV approach that actually caused by slippage of AMMs as well.
 
-This is a very common MEV approach that actually caused by slippage of AMMs as well.
 
 ## **Solutions**
 
-We call the solution as **Batch Swap**, including three parts: **Batch Auction**, **A2MM** and **Chainlink Automation**.
+We call out our demo solution as **Batch Swap**, including three parts: **Batch Auction**, **A2MM** and **Chainlink Automation**.
 
 
 Star with a esay example: 
 
 > In a time window, some people want to swap LINK for USDT and deposit LINK into the contract, while others want to swap USDT for LINK and deposit USDT into the contract. We assume that there are 50 LINK and 1000 USDT in the contract, and the market price at that time is 1 LINK worth 10 USDT, then 500 USDT will swap for LINK directly while the other 500 USDT will be swapped in AMM.
 
-We gather some random transaction demands within a time window, and exchange the symmetrical part directly, while the insufficient part uses AMM to fill the swap.
+We gather some random transaction demands within this time window, and exchange the symmetrical part directly, while the insufficient part uses AMM to fill the swap.
 
 ### **Batch Auction**
 
-We practiced **Batch Auction** to extend AMM. **Batch Auction** is commonly used in web2 exchanges to alleviate the problem of insufficient liquidity in commodities transactions. 
+We practiced **Batch Auction** to extend the AMM. **Batch Auction** is commonly used in web2 exchanges to alleviate the problem of insufficient liquidity in commodities transactions. 
 
 We use the same idea, use a window of time to gather a batch of swaps and implement a unified clearing price for them, making them independent of the ranking.
 
-The defination in Crypto Wiki is as follows:
+The defination in <ins> Crypto Wiki <ins> is as follows:
 
 * Individual orders are grouped together into a batch and executed at the same time. 
 
@@ -59,7 +59,7 @@ The benefits of this are obvious, and direct exchange is always the most cost-ef
 
 ### **A2MM**
 
-But **Batch Auction** is not enough, if the demand is asymmetric, the excess demand will go to the AMM, where the attacker waits there. 
+But **Batch Auction** is not enough, if the demand is asymmetric, the excess demand will go to the AMM, where the attacker can still take advantage of. 
 
 So we implemented an **A2MM** aggregator, that is, aggregated the liquidity of multiple AMMs, and only selected one with the best price when a swap execute. This means that an attacker would have to attack multiple AMMs simultaneously to affect this transaction.
 
