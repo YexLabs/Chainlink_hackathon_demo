@@ -324,7 +324,6 @@ contract YexSwapExample is YexSwapPool, AutomationCompatibleInterface {
         uint256 currentBatch = batchid;
         batchid += 1;
         // batch_start_time[batchid] = block.timestamp;
-        //this is the same look up we are having with require statement. why do we need to duplicate?
         uint256 balanceA = batch_tokenA[currentBatch];
         uint256 balanceB = batch_tokenB[currentBatch];
         uint256 balanceA_ = balanceA;
