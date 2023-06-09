@@ -3,9 +3,9 @@
 This repo is for Chainlink hackathon demo of YexLab.
 
 <p align="center">
-  <a href="https://youtu.be/_nhJQM-oWD4">demo video</a> •
-  <a href="https://raw.githubusercontent.com/yexlab/Chainlink_hackathon_demo/main/docs/BatchSwapDemo.pdf">slides</a> •
-  <a href="https://yexlab.vercel.app/demo1_swap">demo page</a> 
+  <a href="https://youtu.be/_nhJQM-oWD4" target="_blank">demo video</a> •
+  <a href="https://raw.githubusercontent.com/yexlab/Chainlink_hackathon_demo/main/docs/BatchSwapDemo.pdf" target="_blank">slides</a> •
+  <a href="https://yexlab.vercel.app/demo1_swap" target="_blank">demo page</a> 
 </p>
 
 ## **Problems**
