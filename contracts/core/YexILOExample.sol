@@ -52,7 +52,8 @@ contract YexILOExample is
 
     uint256 start_time = block.timestamp;
     uint256 public end_time;
-    bool public isInitialized = false;
+
+    // bool public isInitialized = false;
 
     constructor(uint256 raising_cycle) {
         // --------------- init token ---------------
@@ -135,7 +136,7 @@ contract YexILOExample is
             amountA > 0 || amountB > 0,
             "addLiquidity: INSUFFICIENT_INPUT_AMOUNT"
         );
-        require(isInitialized, "pool has not been initialized"); // do we need this variable?
+        // require(isInitialized, "pool has not been initialized"); // do we need this variable?
         uint256 lp_supply = totalSupply();
         require(lp_supply > 0, "pool has not been initialized");
         uint256 amountLP = 0;
