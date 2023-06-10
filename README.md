@@ -2,6 +2,8 @@
 
 This repo is for Chainlink hackathon demo of YexLab.
 
+We present **Batch Swap**, enhanced by **Chainlink Automation**.  It is anti-sandwich attacks, order-independent and uses AMM less to reduce slippage. It works just like a traditional swap in the users' view, all details are hind in the backend and automatically executed by  **Chainlink Automation**.
+
 <p align="center">
   <a href="https://github.com/yexlab/Chainlink_hackathon_demo" target="_blank">GitHub</a> •
   <a href="https://youtu.be/_nhJQM-oWD4" target="_blank">demo video</a> •
