@@ -97,4 +97,4 @@ In our demo, the price is obtained by sorting multiple aggregated AMMs. If we ha
 
 ## What's next for YexLab
 
-We plan to implement **Batch Swap** in our DEX product [Splatter Protocol](https://www.splatterprotocol.xyz/).
+YexLab is a research based team that focuses on the prototypes of DeFi and DAO products. We will deliver the customized  **Batch Swap** solutions for our partners [Splatter Protocol](https://www.splatterprotocol.xyz/) and [Honeypot Finance](https://twitter.com/honeypotfinance).
